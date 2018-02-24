@@ -34,9 +34,9 @@ def on_intent(intent_request, session):
 		return handle_session_end_request()
 	else:
         #TODO add intent names and functions
-        if intent_name == "current_car_number":
+            if intent_name == "current_car_number":
 			return get_current_car_number(intent_request)
-        else:
+            else:
 			raise ValueError("Invalid intent")
 
 #When a session ended request is received
@@ -89,5 +89,3 @@ def build_response(session_attributes, speechlet_response):
 		"sessionAttributes": session_attributes,
 		"response": speechlet_response
 	}
-
-
