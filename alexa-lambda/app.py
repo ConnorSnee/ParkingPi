@@ -10,7 +10,7 @@ def index():
 
 def lambda_handler(event, context):
     #TODO enter the application ID
-	if (event["session"]["application"]["applicationId"] != ""):
+	if (event["session"]["application"]["applicationId"] != "amzn1.ask.skill.bd0a053f-37fa-44a2-aa9b-57d447551cf1"):
 		raise ValueError("Invalid Application ID")
 	if event["request"]["type"] == "LaunchRequest":
 		return on_launch(event["request"], event["session"])
@@ -34,14 +34,26 @@ def on_intent(intent_request, session):
 		return handle_session_end_request()
 	else:
         #TODO add intent names and functions
-        if intent_name == "":
-			return
+        if intent_name == "current_car_number":
+			return get_current_car_number(intent_request)
         else:
 			raise ValueError("Invalid intent")
 
 #When a session ended request is received
 def on_session_ended(session_ended_request, session):
 	print("Ending session.")
+
+############################################################################
+######################### Intent Functions #################################
+############################################################################
+
+def get_current_car_number(intent_request):
+	session_attributes = {}
+	card_title = "intent"
+	speech_output = "Thank you for using the Parking Counter app, goodbye"
+	should_end_session = True
+	return build_response(session_attributes, build_speechlet_response(card_title, speech_output, should_end_session))
+
 
 def handle_session_ended_request():
 	session_attributes = {}
@@ -77,3 +89,5 @@ def build_response(session_attributes, speechlet_response):
 		"sessionAttributes": session_attributes,
 		"response": speechlet_response
 	}
+
+
