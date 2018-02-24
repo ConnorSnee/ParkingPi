@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "region": "us-east-1",
+    "api_handler_name": "rekognition-lambda-dev",
+    "api_handler_arn": "arn:aws:lambda:us-east-1:428727716346:function:rekognition-lambda-dev",
+    "rest_api_id": "dnnh2ykp75",
+    "lambda_functions": {},
+    "chalice_version": "1.1.0",
+    "api_gateway_stage": "api",
+    "backend": "api"
+  }
+}
